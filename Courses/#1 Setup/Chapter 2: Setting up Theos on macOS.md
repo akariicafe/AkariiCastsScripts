@@ -3,7 +3,7 @@
 Let’s install Theos on macOS. If you’re using Linux or Windows with WSL, you can skip to the next tutorial.
 
 > **Hint**:<br/>
-> You can find Theos here: https://theos.dev/docs/installation-macos
+> You can find Theos documentation here: https://theos.dev/docs/installation-macos.<br/>
 > You can find Xcode on the App Store here: https://apps.apple.com/app/id497799835.<br/>
 > You can find Xcode on the Developer Portal here: https://developer.apple.com/downloads/applications/.<br/>
 > You can find Homebrew here: https://brew.sh.
@@ -24,10 +24,23 @@ Great! We're now ready to install Theos. Run the install command from the docume
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
 ```
 
-it asks for password
-clones theos
-installs dependencies
-extracts the sdks
+This command will now install additional dependencies. This requires entering your password.
+You can see Theos installing to your home directory.
+Lastly, the installer extracts the latest SDKs.
 
-install make
-echo 'export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"' >> ~/.zprofile
+We have one last tool to install. We'll install a newer version of `make`:
+
+```bash
+brew install make
+```
+
+This version of `make` is faster than the version that Xcode provides.
+To make sure you use this version of `make`, we'll run
+
+```bash
+echo 'export PATH="$(brew --prefix make)/libexec/gnubin:${PATH}"' >> ~/.zprofile
+```
+
+We'll now re-start the shell. This is important for the Theos installation to complete and the changes for `make` to take effect.
+
+Now you're ready to use Theos on macOS!
